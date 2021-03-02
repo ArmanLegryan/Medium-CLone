@@ -2,7 +2,7 @@
   <div class="auth-page">
     <div class="container page">
       <div class="row">
-        <div class="col-md-6 offset-3 col-xs-12">
+        <div class="col-md-6  col-xs-12" style="margin: 0 auto">
           <h1 class="text-xs-center">Sign up</h1>
           <p class="text-xs-center">
             <router-link :to="{name: 'login'}">Need an account?</router-link>
