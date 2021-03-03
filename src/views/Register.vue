@@ -7,8 +7,10 @@
           <p class="text-xs-center">
             <router-link :to="{name: 'login'}">Need an account?</router-link>
           </p>
-          VALIDATION ERRORS
-
+          <mcv-validation-errors
+            v-if="validationErrors"
+            :validation-errors="validationErrors"
+          />
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group">
               <input
@@ -21,7 +23,7 @@
 
             <fieldset class="form-group">
               <input
-                type="email"
+                type="text"
                 class="form-control form-control-lg"
                 placeholder="Email"
                 v-model="email"
@@ -51,8 +53,13 @@
 </template>
 
 <script>
+import McvValidationErrors from '@/components/ValidationErrors'
+
 export default {
   name: 'McvRegister',
+  components: {
+    McvValidationErrors
+  },
   data() {
     return {
       email: '',
@@ -63,6 +70,9 @@ export default {
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
     }
   },
   methods: {
