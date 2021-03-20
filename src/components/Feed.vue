@@ -104,7 +104,6 @@ export default {
         ...parsedUrl.query
       })
       const apiUrlWithParams = `${this.apiUrl.toString()}?${stringifiedParams}`
-      console.log(apiUrlWithParams)
       this.$store.dispatch(actionTypes.getFeed, {apiUrl: apiUrlWithParams})
     }
   }
