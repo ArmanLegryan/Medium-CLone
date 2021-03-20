@@ -1,8 +1,7 @@
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-
-    <div v-if="error">Something went wrong...</div>
+    <mcv-loading v-if="isLoading" />
+    <mcv-error-message v-if="error" />
 
     <div v-if="feed">
       <div
@@ -54,6 +53,8 @@
 import {mapState} from 'vuex'
 import {actionTypes} from '@/store/modules/feed'
 import McvPagination from '@/components/Pagination'
+import McvLoading from '@/components/Loading'
+import McvErrorMessage from '@/components/ErrorMessage'
 import {limit} from '../../helpers/vars'
 const queryString = require('query-string')
 
@@ -66,7 +67,9 @@ export default {
     }
   },
   components: {
-    McvPagination
+    McvPagination,
+    McvLoading,
+    McvErrorMessage
   },
   computed: {
     ...mapState({
